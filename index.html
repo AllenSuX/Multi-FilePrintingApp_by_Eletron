@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Electron 列印應用程式</title>
+</head>
+<body>
+  <h1>選擇要列印的檔案</h1>
+  <input type="file" id="fileInput" multiple>
+  <button onclick="printFiles()">列印</button>
+  <script src="printPage.js"></script>
+  <script>
+
+    function printFiles() {
+      const fileInput = document.getElementById('fileInput');
+      console.log(fileInput.files)
+      printAccess()
+    }
+    function printGoogle() {
+      // 向主進程發送列印請求
+      ipcRenderer.send('print-google');
+    }
+
+
+    // function handleFileSelection(event) {
+    //   const fileInput = event.target;
+    //   const selectedFiles = Array.from(fileInput.files).map(file => file.path);
+      
+    //   window.ipcRenderer.send('open-file-dialog');
+
+    //   // 等待一次 ipcRenderer 回應
+    //   window.ipcRenderer.once('selected-files', (event, files) => {
+    //     console.log('Selected files:', files);
+    //     // 在這裡處理列印已選擇的檔案
+
+    //   });
+    // }
+
+    // document.getElementById('fileInput').addEventListener('change', handleFileSelection);
+  </script>
+</body>
+</html>
